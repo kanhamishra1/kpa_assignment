@@ -2,9 +2,9 @@
 
 from django.db import models
 
-# ==========================
+
 # 1. POST /api/forms/bogie-checksheet
-# ==========================
+
 
 class BogieChecksheetForm(models.Model):
     form_number = models.CharField(max_length=100, unique=True)
@@ -38,9 +38,9 @@ class BmbcChecksheet(models.Model):
     plunger_spring = models.CharField(max_length=100)
 
 
-# ==========================
+
 # 2. GET /api/forms/wheel-specifications
-# ==========================
+
 
 class WheelSpecificationForm(models.Model):
     form_number = models.CharField(max_length=100)

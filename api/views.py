@@ -2,15 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics, filters
 from django_filters.rest_framework import DjangoFilterBackend
+
 from .models import BogieChecksheetForm, WheelSpecificationForm
 from .serializers import (
     BogieChecksheetFormSerializer,
     WheelSpecificationFormSerializer
 )
 
-# ===============================
+
+
 # 1. POST /api/forms/bogie-checksheet
-# ===============================
+
 
 class BogieChecksheetCreateView(APIView):
     def post(self, request):
@@ -29,9 +31,8 @@ class BogieChecksheetCreateView(APIView):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# ===============================
+
 # 2. GET /api/forms/wheel-specifications
-# ===============================
 
 class WheelSpecificationListView(generics.ListAPIView):
     queryset = WheelSpecificationForm.objects.all()
@@ -61,4 +62,3 @@ class WheelSpecificationListView(generics.ListAPIView):
             "message": "Filtered wheel specification forms fetched successfully.",
             "success": True
         }, status=status.HTTP_200_OK)
-
